@@ -21,13 +21,6 @@ const sessionStore = new MySQLStore({
     database: "vue-todo"
 });
 
-const pool = mysql.createPool({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "vue-todo"
-});
-
 const middlewareSession = session({
     saveUninitialized: false,
     secret: "foobar34",

@@ -2,31 +2,29 @@
 
 const User = require('../../models/user');
 
-module.exports = function(router){
+module.exports = function(router) {
 
-    router.post("/user/register", function(request, response){
+    router.post("/user/register", function(request, response) {
         console.log(request.body)
-        User.createUser(request.body.email, request.body.username, request.body.password, function(err, result){
-            if(err){
+        User.createUser(request.body.email, request.body.username, request.body.password, function(err, result) {
+            if (err) {
                 response.status(500);
-                response.json({message: "Error al registrar un nuevo usuario", error: err});
-            }
-            else{
+                response.json({ message: "Error al registrar un nuevo usuario", error: err });
+            } else {
                 response.status(200);
-                response.json({message: "Registro completado correctamente", error: null});
+                response.json({ message: "Registro completado correctamente", error: null });
             }
         });
     });
 
-    router.post("/user/login", function(request, response){
-        User.loginUser(request.body.username, request.body.password, function(err, user){
-            if(err){
+    router.post("/user/login", function(request, response) {
+        User.loginUser(request.body.username, request.body.password, function(err, user) {
+            if (err) {
                 response.status(500);
-                response.json({message: "Usuario y/o contraseña incorrectos", error: err});
-            }
-            else{
+                response.json({ message: "Usuario y/o contraseña incorrectos", error: err });
+            } else {
                 response.status(200);
-                response.json({user: user});
+                response.json({ user: user });
             }
         });
     });
@@ -51,8 +49,16 @@ module.exports = function(router){
     //     })
     // });
 
-    // router.post("/user/updatePassword", function(request, response){
-        
-    // });
+    router.post("/user/updateProfile", function(request, response) {
+        User.updateUser(request.body.email, request.body.username, request.body.oldPassword, request.body.newPassword, function(err, result) {
+            if (err) {
+                response.status(500);
+                response.json({ message: "Error al guardar los cambios en el perfil", error: err });
+            } else {
+                response.status(200);
+                response.json({ message: "Cambios guardados correctamente" });
+            }
+        });
+    });
 
 }
