@@ -53,7 +53,8 @@ module.exports = function(router) {
         User.updateUser(request.body.email, request.body.username, request.body.oldPassword, request.body.newPassword, function(err, result) {
             if (err) {
                 response.status(500);
-                response.json({ message: "Error al guardar los cambios en el perfil", error: err });
+
+                response.json({ message: "Error al guardar los cambios en el perfil", error: err.message });
             } else {
                 response.status(200);
                 response.json({ message: "Cambios guardados correctamente" });

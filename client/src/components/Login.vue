@@ -63,13 +63,12 @@
                       <v-text-field
                         v-model="loginPassword"
                         label="Password"
+                        type="password"
                         prepend-inner-icon="mdi-lock"
                         required
                         outlined
+                        @keyup.enter="login()"
                       ></v-text-field>
-                    </v-col>
-                    <v-col cols="12">
-                      <v-checkbox label="Remember me"></v-checkbox>
                     </v-col>
                     <v-spacer></v-spacer>
                     <v-col class="d-flex mx-auto" cols="12" sm="3" xsm="12">
@@ -93,7 +92,7 @@
               <v-card-text>
                 <v-form ref="registerForm" lazy-validation>
                   <v-row>
-                    <v-col cols="12">
+                    <v-col cols="8">
                       <v-text-field
                         v-model="registerEmail"
                         label="E-mail"
@@ -102,7 +101,7 @@
                         outlined
                       ></v-text-field>
                     </v-col>
-                    <v-col cols="12">
+                    <v-col cols="4">
                       <v-text-field
                         v-model="registerUsername"
                         label="Username"

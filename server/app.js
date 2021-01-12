@@ -55,7 +55,7 @@ function middlewareNotFound(request, response) {
 
 function middlewareServerError(error, request, response, next) {
     response.status(500);
-    console.log(error.message);
+    
     response.render("error500", { message: error.message });
 }*/
 
@@ -63,6 +63,6 @@ app.listen(3000, function(err) {
     if (err) {
         console.error("No se pudo inicializar el servidor " + err.message);
     } else {
-        console.log("Servidor arrancado en puerto 3000");
+
     }
 });
